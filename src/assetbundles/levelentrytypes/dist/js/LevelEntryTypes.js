@@ -42,7 +42,7 @@ $.refreshEntryTypes = function(parentId, sectionId) {
 	    }
 
 	    // Check if current entry type is disabled and display an error
-	    enabledAndSelected = $('#entryType').children('option:disabled:selected').eq(0).length;
+	    enabledAndSelected = $('#entryType').children('option:disabled:selected').eq(0).length || 0;
 	    
 	    if(enabledAndSelected > 0)
 	    {
@@ -59,7 +59,7 @@ $(function () {
     $.refreshEntryTypes(selectedParent, sectionId);
 
 	$('#parentId').data('elementSelect').on('selectElements', function(e) {
-    	selectedParent = e.elements[0].id ?? 0;
+    	selectedParent = e.elements[0].id || 0;
     	$.refreshEntryTypes(selectedParent, sectionId);
 	});
 
