@@ -40,6 +40,14 @@ $.refreshEntryTypes = function(parentId, sectionId) {
 	    	$('#entryType').children('option:enabled').eq(0).prop('selected',true);
 	    	$('#entryType').trigger('change');
 	    }
+
+	    // Check if current entry type is disabled and display an error
+	    enabledAndSelected = $('#entryType').children('option:disabled:selected').eq(0).length;
+	    
+	    if(enabledAndSelected > 0)
+	    {
+	    	Craft.cp.displayError('The selected parent entry does not allow child entries of this type. Select a new parent or change entry types.');
+	    }
 	});
 }
 
