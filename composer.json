@@ -1,0 +1,41 @@
+{
+    "name": "confluxgroup/craft-level-entry-types",
+    "description": "Allows developers to limit the entry types available at each level of a structure section.",
+    "type": "craft-plugin",
+    "version": "0.1.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "level entry types"
+    ],
+    "support": {
+        "docs": "https://github.com/confluxgroup/craft-level-entry-types/blob/master/README.md",
+        "issues": "https://github.com/confluxgroup/craft-level-entry-types/issues"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Conflux Group, Inc.",
+            "homepage": "https://confluxgroup.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "ConfluxGroup\\LevelEntryTypes\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Level Entry Types",
+        "handle": "level-entry-types",
+        "developer": "Conflux Group, In.c",
+        "developerUrl": "https://confluxgroup.com",
+        "documentationUrl": "https://github.com/confluxgroup/craft-level-entry-types/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/confluxgroup/craft-level-entry-types/master/CHANGELOG.md",
+        "class": "ConfluxGroup\\LevelEntryTypes\\LevelEntryTypes"
+    }
+}
