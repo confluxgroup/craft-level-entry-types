@@ -14,17 +14,19 @@
     var structureId = $('[data-structure-id]').data('structure-id');
     var structureMaxLevels = $('[data-max-levels]').data('max-levels') || 20;
 
-    var pixelsMap = {};
-
-    for (i = 1; i < structureMaxLevels + 1; i++) {
-        pixelsMap[(i * 44) - 16 + "px"] = i;
-    }
+    if(Craft.levelEntryTypes.pixelsMap | length < 1)
+    {
+	    Craft.levelEntryTypes.pixelsMap = {};
+	    for (i = 1; i < structureMaxLevels + 1; i++) {
+	        Craft.levelEntryTypes.pixelsMap[(i * 44) - 16 + "px"] = i;
+	    }
+	}    
 
     var hasErrors = false;
 
     $('table[data-structure-id] td[data-attr="type"]').each(function () {
         padding = $(this).siblings('[data-title]').css('padding-left');
-        level = pixelsMap[padding];
+        level = Craft.levelEntryTypes.pixelsMap[padding];
         entryTypeName = $(this).text();
 
         allowedLevels = Craft.levelEntryTypes.map[structureId][entryTypeName];
