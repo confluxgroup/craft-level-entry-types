@@ -12,7 +12,7 @@
 
  $.validateEntryTypeLevels = function () {
     var structureId = $('[data-structure-id]').data('structure-id');
-    var structureMaxLevels = $('[data-max-levels]').data('max-levels');
+    var structureMaxLevels = $('[data-max-levels]').data('max-levels') || 20;
 
     var pixelsMap = {};
 
@@ -28,10 +28,11 @@
         entryTypeName = $(this).text();
 
         allowedLevels = Craft.levelEntryTypes.map[structureId][entryTypeName];
+        limitedLevels = Craft.levelEntryTypes.limitedLevels[structureId];
 
         if (allowedLevels.includes(level)) {
             $(this).parent().removeClass("entry-position-error");
-        } else {
+        } else if( limitedLevels.includes(level) ){
             hasErrors = true;
             $(this).parent().addClass("entry-position-error");
         }

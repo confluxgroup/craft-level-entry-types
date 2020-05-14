@@ -119,6 +119,7 @@ class LevelEntryTypesService extends Component
             // Loop through the levels in each structure
             foreach($structureSettings as $structureLevel => $structureLevelEntryTypes)
             {
+
                 // Loop through the entry types in each level
                 foreach($structureLevelEntryTypes as $structureLevelEntryTypeHandle)
                 {
@@ -127,18 +128,26 @@ class LevelEntryTypesService extends Component
                     // add new level to output[section ID][entry type name]
                     $output['map'][ $sectionHandleMap[$structureHandle] ][ $entryTypeHandleMap[$structureLevelEntryTypeHandle]][] = $structureLevel;
                 }
-            }
-            
-            // Go through the output by entry type
-            foreach($output['map'][$sectionHandleMap[$structureHandle]] as $outputSectionEntryTypeKey => $outputSectionEntryTypes)
-            {
-                // if no levels are defined for a given entry type
-                // then default to all levels
-                if(empty($outputSectionEntryTypes))
+
+                if(empty($structureLevelEntryTypes))
                 {
-                    $output['map'][$sectionHandleMap[$structureHandle]][$outputSectionEntryTypeKey] = $structureLevels;
+                   foreach($entryTypes as $entryType)
+                   {
+                        $output['map'][ $sectionHandleMap[$structureHandle] ][$entryType->name][] = $structureLevel; 
+                   }
                 }
             }
+            
+            // // Go through the output by entry type
+            // foreach($output['map'][$sectionHandleMap[$structureHandle]] as $outputSectionEntryTypeKey => $outputSectionEntryTypes)
+            // {
+            //     // if no levels are defined for a given entry type
+            //     // then default to all levels
+            //     if(empty($outputSectionEntryTypes))
+            //     {
+            //         $output['map'][$sectionHandleMap[$structureHandle]][$outputSectionEntryTypeKey] = $structureLevels;
+            //     }
+            // }
 
         }
 
