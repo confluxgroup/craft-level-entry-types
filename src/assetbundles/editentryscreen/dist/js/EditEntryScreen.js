@@ -1,7 +1,7 @@
 /**
  * Level Entry Types plugin for Craft CMS
  *
- * LevelEntryTypes JS
+ * EditEntryScreen JS
  *
  * @author    Conflux Group, Inc.
  * @copyright Copyright (c) 2020 Conflux Group, Inc.
@@ -11,10 +11,9 @@
  */
 
  $.urlParam = function (name) {
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
-                      .exec(window.location.href);
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results == null) {
-         return 0;
+        return 0;
     }
     return results[1] || 0;
 }
@@ -35,10 +34,19 @@ $.refreshEntryTypes = function(parentId, sectionId) {
       		});
 	    }
 
+	    // Special logic for new entries only
 	    if($.urlParam('fresh') == 1)
 	    {
-	    	$('#entryType').children('option:enabled').eq(0).prop('selected',true);
-	    	$('#entryType').trigger('change');
+	    	firstEnabledOption = $('#entryType').children('option:enabled').eq(0);
+	    	selectedOption = $('#entryType').children('option:selected').eq(0);
+	    	
+	    	// If the current selected option isn't enabled, then force 
+	    	// switch to the first enabled entry type
+	    	if(selectedOption.prop('disabled') )
+	    	{
+	    		firstEnabledOption.prop('selected',true);
+	    		$('#entryType').trigger('change');
+	    	}
 	    }
 
 	    // Check if current entry type is disabled and display an error

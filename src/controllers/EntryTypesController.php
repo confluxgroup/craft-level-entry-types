@@ -38,7 +38,7 @@ class EntryTypesController extends Controller
 
 
 
-        $entryTypes = LevelEntryTypes::$plugin->levelEntryTypesService->get($sectionId, $level);
+        $entryTypes = LevelEntryTypes::$plugin->levelEntryTypesService->getDisabledEntryTypes($sectionId, $level);
 
         $result = json_encode([
             'parentId' => $parentId, 
@@ -49,6 +49,11 @@ class EntryTypesController extends Controller
         ]);
 
         return $result;
+    }
+
+    public function actionMap()
+    {
+        return LevelEntryTypes::$plugin->levelEntryTypesService->getSectionEntryTypeLevelMap();
     }
 
 

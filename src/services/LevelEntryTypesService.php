@@ -32,7 +32,7 @@ class LevelEntryTypesService extends Component
      *
      * @return mixed
      */
-    public function get($sectionId, $parentLevel = 0)
+    public function getDisabledEntryTypes($sectionId, $parentLevel = 0)
     {
 
         $settings = LevelEntryTypes::$plugin->getSettings();
@@ -66,5 +66,61 @@ class LevelEntryTypesService extends Component
         } 
         
         return array_values($entryTypesArray);
+    }
+
+    public function getSectionEntryTypeLevelMap()
+    {
+        $settings = LevelEntryTypes::$plugin->getSettings();
+
+        // Get all entry types for this section
+        $entryTypes = Craft::$app->sections->getAllEntryTypes();
+        $sections = Craft::$app->sections->getAllSections();
+        
+        // Output array
+        $output = [];
+
+        // Some map arrays
+        $sectionHandleMap = [];
+        $entryTypeHandleMap = [];
+
+        // Process the sections into the output array and section handle map
+        foreach($sections as $section)
+        {
+            if($section->type == 'structure')
+            {
+                $output[(string) $section->id] = [];
+                $sectionHandleMap[$section->handle] = $section->id;
+            }
+        }
+
+        // Process the entry types into the output array and the entry handle map
+        foreach($entryTypes as $entryType)
+        {            
+            $output[$entryType->sectionId][$entryType->name] = [];
+            $entryTypeHandleMap[$entryType->handle] = $entryType->name;
+        }
+
+        // Loop through the structures in our settings
+        foreach($settings['structures'] as $structureHandle => $structureSettings)
+        {
+            // Loop through the levels in each structure
+            foreach($structureSettings as $structureLevel => $structureLevelEntryTypes)
+            {
+                // Loop through the entry types in each level
+                foreach($structureLevelEntryTypes as $structureLevelEntryTypeHandle)
+                {
+                    // Add to the output array
+                    // this convuluted mess adds each level to the output
+                    // add new level to output[section ID][entry type name]
+                    $output[ $sectionHandleMap[$structureHandle] ][ $entryTypeHandleMap[$structureLevelEntryTypeHandle]][] = $structureLevel;
+                }
+            }
+        }
+
+        //dd($output);
+
+        return json_encode($output);
+
+
     }
 }

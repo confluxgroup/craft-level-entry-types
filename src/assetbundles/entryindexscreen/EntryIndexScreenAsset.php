@@ -6,20 +6,20 @@
  * @copyright Copyright (c) 2020 Conflux Group, Inc.
  */
 
-namespace ConfluxGroup\LevelEntryTypes\assetbundles\levelentrytypes;
+namespace ConfluxGroup\LevelEntryTypes\assetbundles\entryindexscreen;
 
 use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
 /**
- * LevelEntryTypesAsset AssetBundle
+ * EditEntryScreenAsset AssetBundle
  *
  * @author    Conflux Group, Inc.
  * @package   LevelEntryTypes
  * @since     1
  */
-class LevelEntryTypesAsset extends AssetBundle
+class EntryIndexScreenAsset extends AssetBundle
 {
     // Public Methods
     // =========================================================================
@@ -30,7 +30,7 @@ class LevelEntryTypesAsset extends AssetBundle
     public function init()
     {
         // define the path that your publishable resources live
-        $this->sourcePath = "@confluxgroup/levelentrytypes/assetbundles/levelentrytypes/dist";
+        $this->sourcePath = "@plugin/assetbundles/entryindexscreen/dist";
 
         // define the dependencies
         $this->depends = [
@@ -40,7 +40,7 @@ class LevelEntryTypesAsset extends AssetBundle
         // define the relative path to CSS/JS files that should be registered with the page
         // when this asset bundle is registered
         $this->js = [
-            'js/LevelEntryTypes.js',
+            'js/EntryIndexScreen.js',
         ];
 
         $this->css = [

@@ -21,7 +21,9 @@ use yii\base\Event;
 use craft\web\View;
 use craft\events\RegisterTemplateRootsEvent;
 
-use ConfluxGroup\LevelEntryTypes\assetbundles\levelentrytypes\LevelEntryTypesAsset;
+use ConfluxGroup\LevelEntryTypes\assetbundles\editentryscreen\EditEntryScreenAsset;
+use ConfluxGroup\LevelEntryTypes\assetbundles\entryindexscreen\EntryIndexScreenAsset;
+
 use ConfluxGroup\LevelEntryTypes\services\LevelEntryTypesService;
 use ConfluxGroup\LevelEntryTypes\models\Settings;
 /**
@@ -50,7 +52,7 @@ class LevelEntryTypes extends Plugin
         parent::init();
         self::$plugin = $this;
 
-        Craft::setAlias('@confluxgroup/levelentrytypes', $this->getBasePath());
+        Craft::setAlias('@plugin', $this->getBasePath());
 
         $this->setComponents([
             'levelEntryTypesService' => LevelEntryTypesService::class
@@ -58,22 +60,34 @@ class LevelEntryTypes extends Plugin
         ]);
 
         // Only fire event on the admin/entries section of the CP
-        if (Craft::$app->getRequest()->isCpRequest && Craft::$app->getRequest()->getSegment(1) == 'entries' && Craft::$app->getRequest()->getSegment(3) != '') {
-            Event::on(
-                View::class,
-                View::EVENT_BEFORE_RENDER_TEMPLATE,
-                function() {
-                    Craft::$app->getView()->registerAssetBundle(LevelEntryTypesAsset::class);
+        if(Craft::$app->getRequest()->isCpRequest && Craft::$app->getRequest()->getSegment(1) == 'entries')
+        {
+            // Edit Entry Screen
+            if(Craft::$app->getRequest()->getSegment(3) != '')
+            {
+                Event::on(
+                    View::class,
+                    View::EVENT_BEFORE_RENDER_TEMPLATE,
+                    function() {
+                        Craft::$app->getView()->registerAssetBundle(EditEntryScreenAsset::class);
+                    }
+                );
 
-                    //$sectionHandle = Craft::$app->getRequest()->getSegment(2);
-
-                    //$this->levelEntryTypesService->levelEntryTypes($sectionHandle);
-
-                    //Craft::$app->getView()->registerJs(''), View::POS_HEAD);
-
-                    //Jem::$plugin->jemService->exampleService()
-                }
-            );
+            }
+            // Entry Index
+            else
+            {
+               Event::on(
+                    View::class,
+                    View::EVENT_BEFORE_RENDER_TEMPLATE,
+                    function() {
+                        Craft::$app->getView()->registerAssetBundle(EntryIndexScreenAsset::class);
+                    
+                        // Inject SectionId -> Entry Type Name -> allowed levels mapping
+                        Craft::$app->getView()->registerJs('Craft.levelEntryTypes.map = ' . $this->levelEntryTypesService->getSectionEntryTypeLevelMap(), View::POS_END);
+                    }
+                ); 
+            }                
         }
 
         Craft::info(
