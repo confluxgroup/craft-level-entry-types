@@ -12,7 +12,7 @@
 
  $.validateEntryTypeLevels = function () {
     var structureId = $('[data-structure-id]').data('structure-id');
-    var structureMaxLevels = $('[data-max-levels]').data('max-levels') || 20;
+    var structureMaxLevels = 20;
 
     if(Craft.levelEntryTypes.pixelsMap | length < 1)
     {
