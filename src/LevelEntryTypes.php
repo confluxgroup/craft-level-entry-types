@@ -84,7 +84,7 @@ class LevelEntryTypes extends Plugin
                         Craft::$app->getView()->registerAssetBundle(EntryIndexScreenAsset::class);
                     
                         // Inject SectionId -> Entry Type Name -> allowed levels mapping
-                        Craft::$app->getView()->registerJs('Craft.levelEntryTypes = {}; Craft.levelEntryTypes.map = ' . $this->levelEntryTypesService->getSectionEntryTypeLevelMap(), View::POS_END);
+                        Craft::$app->getView()->registerJs('Craft.levelEntryTypes = ' . $this->levelEntryTypesService->getSectionEntryTypeLevelMap(), View::POS_END);
                     }
                 ); 
             }                
