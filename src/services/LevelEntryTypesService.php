@@ -117,10 +117,6 @@ class LevelEntryTypesService extends Component
             }
         }
 
-        //dd($output);
-
         return json_encode($output);
-
-
     }
 }
