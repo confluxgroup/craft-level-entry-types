@@ -44,7 +44,7 @@ class EditEntryScreenAsset extends AssetBundle
         ];
 
         $this->css = [
-            //'css/Jem.css',
+            'css/EditEntryScreen.css',
         ];
 
         parent::init();

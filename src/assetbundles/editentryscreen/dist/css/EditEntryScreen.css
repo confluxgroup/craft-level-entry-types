@@ -9,3 +9,11 @@
  * @package   Jem
  * @since     1
  */
+
+#entryType-field.entry-position-error label {
+    color: #EF4E4E !important;
+}
+
+#entryType-field.entry-position-error select {
+    color: #EF4E4E !important;
+}

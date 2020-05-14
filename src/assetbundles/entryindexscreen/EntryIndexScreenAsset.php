@@ -44,7 +44,7 @@ class EntryIndexScreenAsset extends AssetBundle
         ];
 
         $this->css = [
-            //'css/Jem.css',
+            'css/EntryIndexScreen.css',
         ];
 
         parent::init();

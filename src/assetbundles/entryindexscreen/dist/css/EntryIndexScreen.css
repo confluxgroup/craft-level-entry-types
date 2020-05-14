@@ -9,3 +9,16 @@
  * @package   LevelEntryTypes
  * @since     1
  */
+
+.entry-position-error td[data-attr='type'] {
+     color: #EF4E4E;
+     position: relative;
+}
+
+.entry-position-error td[data-attr='type']:after {
+    content: url('../images/alert.svg');
+    position: relative;
+    padding-left: 5px;
+    display: inline;
+    top: 4px;
+}

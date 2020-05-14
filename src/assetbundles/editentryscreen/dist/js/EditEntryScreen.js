@@ -25,7 +25,9 @@ $.refreshEntryTypes = function(parentId, sectionId) {
     	async: true,
     	dataType: "json"
   	}).done(function (response) {
-    	
+
+        $("#entryType-field").removeClass("entry-position-error");
+
     	$('#entryType option').attr('disabled', false);
 
     	if (response.disabledEntryTypes) {
@@ -39,8 +41,8 @@ $.refreshEntryTypes = function(parentId, sectionId) {
 	    {
 	    	firstEnabledOption = $('#entryType').children('option:enabled').eq(0);
 	    	selectedOption = $('#entryType').children('option:selected').eq(0);
-	    	
-	    	// If the current selected option isn't enabled, then force 
+
+	    	// If the current selected option isn't enabled, then force
 	    	// switch to the first enabled entry type
 	    	if(selectedOption.prop('disabled') )
 	    	{
@@ -51,10 +53,12 @@ $.refreshEntryTypes = function(parentId, sectionId) {
 
 	    // Check if current entry type is disabled and display an error
 	    enabledAndSelected = $('#entryType').children('option:disabled:selected').eq(0).length || 0;
-	    
+
 	    if(enabledAndSelected > 0)
 	    {
 	    	Craft.cp.displayError('The selected parent entry does not allow child entries of this type. Select a new parent or change entry types.');
+
+            $("#entryType-field").addClass("entry-position-error");
 	    }
 	});
 }
@@ -76,6 +80,11 @@ $(function () {
     	$.refreshEntryTypes(selectedParent, sectionId);
 	});
 
-});	
+    $("#entryType").on('change', function(){
+        selectedParent = $('#parentId').data('elementSelect').getElements().first().data('id');
+        $.refreshEntryTypes(selectedParent, sectionId);
+    });
+
+});
 
 
