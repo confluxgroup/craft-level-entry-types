@@ -32,7 +32,7 @@
     "extra": {
         "name": "Level Entry Types",
         "handle": "level-entry-types",
-        "developer": "Conflux Group, In.c",
+        "developer": "Conflux Group, Inc.",
         "developerUrl": "https://confluxgroup.com",
         "documentationUrl": "https://github.com/confluxgroup/craft-level-entry-types/blob/master/README.md",
         "changelogUrl": "https://raw.githubusercontent.com/confluxgroup/craft-level-entry-types/master/CHANGELOG.md",

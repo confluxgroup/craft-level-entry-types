@@ -2,11 +2,9 @@
 
 Allows developers to limit the entry types available at each level of a structure section.
 
-![Screenshot](resources/img/plugin-logo.png)
-
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.x.
 
 ## Installation
 
@@ -40,4 +38,4 @@ Some things to do, and ideas for potential features:
 
 * Release it
 
-Brought to you by [Conflux Group, In.c](https://confluxgroup.com)
+Brought to you by [Conflux Group, Inc.](https://confluxgroup.com)
