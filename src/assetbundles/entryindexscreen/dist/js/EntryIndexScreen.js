@@ -20,7 +20,7 @@
 	    for (i = 1; i < structureMaxLevels + 1; i++) {
 	        Craft.levelEntryTypes.pixelsMap[(i * 44) - 16 + "px"] = i;
 	    }
-	}    
+    }
 
     var hasErrors = false;
 
@@ -32,9 +32,9 @@
         allowedLevels = Craft.levelEntryTypes.map[structureId][entryTypeName];
         limitedLevels = Craft.levelEntryTypes.limitedLevels[structureId];
 
-        if (allowedLevels.includes(level)) {
+        if (allowedLevels.includes(level) || !limitedLevels.includes(level)) {
             $(this).parent().removeClass("entry-position-error");
-        } else if( limitedLevels.includes(level) ){
+        } else {
             hasErrors = true;
             $(this).parent().addClass("entry-position-error");
         }
