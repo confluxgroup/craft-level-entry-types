@@ -1,5 +1,7 @@
 # Level Entry Types plugin for Craft CMS 3.x
 
+![overview gif](./docs/screenshots/level-entry-types-overview.gif)
+
 Allows developers to limit the entry types available at each level of a structure section.
 
 ## Requirements
@@ -25,6 +27,8 @@ To install the plugin, follow these instructions.
 This plugin allows you to specify available entry types to the user based on the current structure level of an entry.
 
 For example, if you have a structure made up of landing pages and tabbed pages, you can ensure tabbed pages are only allowed as a descendant of a landing page.
+
+This plugin will allow a user to select from a filtered list of entry types, or display an error message if a user has misconfigured a structure hierarchy.
 
 ## Configuring Level Entry Types
 
@@ -61,6 +65,12 @@ Once your configuration file is in place and the columns have been added to the 
 Consider the following example:
 
 You have a *structure* of *Companies*. The top level entry should be the *Company* name. The second level should be various *Departments* in the company. The third level is various tabs on a *Department* page and can be any of *News*, *Team*, or *Custom Tab* types.
+
+### With this plugin, the following will happen:
+1. While creating new entries, the select dropdown options next to the “Entry Type” field will be enabled/disabled based on your configuration.
+2. While creating new entries, selecting or changing a parent entry will automatically update the list of available entry types.
+3. If the structure is adjusted to an invalid configuration, an error notification will display on the structure listing page and the edit entry page indicating to change the parent entry or entry type.
+
 
 ## Credits
 
