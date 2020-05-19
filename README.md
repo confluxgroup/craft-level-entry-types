@@ -62,7 +62,7 @@ This plugin does not alter Craft’s native behavior when it comes to saving ent
 
 Once your configuration file is in place and the columns have been added to the control panel element index pages you should be good to go.
 
-Consider the following example:
+### Consider the following example:
 
 You have a *structure* of *Companies*. The top level entry should be the *Company* name. The second level should be various *Departments* in the company. The third level is various tabs on a *Department* page and can be any of *News*, *Team*, or *Custom Tab* types.
 
