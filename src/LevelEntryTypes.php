@@ -69,7 +69,10 @@ class LevelEntryTypes extends Plugin
                     View::class,
                     View::EVENT_BEFORE_RENDER_TEMPLATE,
                     function() {
-                        Craft::$app->getView()->registerAssetBundle(EditEntryScreenAsset::class);
+                        Craft::$app->getView()->registerAssetBundle(EditEntryScreenAsset::class, View::POS_END);
+
+                        
+                        Craft::$app->getView()->registerJs('new Craft.LevelEntryTypesEntry();', View::POS_READY);
                     }
                 );
 
@@ -84,7 +87,9 @@ class LevelEntryTypes extends Plugin
                         Craft::$app->getView()->registerAssetBundle(EntryIndexScreenAsset::class);
                     
                         // Inject SectionId -> Entry Type Name -> allowed levels mapping
-                        Craft::$app->getView()->registerJs('Craft.levelEntryTypes = ' . $this->levelEntryTypesService->getSectionEntryTypeLevelMap(), View::POS_END);
+                        Craft::$app->getView()->registerJs('var LevelEntryTypesData = ' . $this->levelEntryTypesService->getSectionEntryTypeLevelMap(), View::POS_END);
+
+                        Craft::$app->getView()->registerJs('new Craft.LevelEntryTypesIndex();', View::POS_READY);
                     }
                 ); 
             }                
