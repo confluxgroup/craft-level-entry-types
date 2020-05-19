@@ -26,12 +26,6 @@ class LevelEntryTypesService extends Component
     // Public Methods
     // =========================================================================
 
-    /**
-     * This function can literally be anything you want, and you can have as many service
-     * functions as you want
-     *
-     * @return mixed
-     */
     public function getDisabledEntryTypes($sectionId, $parentLevel = 0)
     {
 
@@ -62,7 +56,6 @@ class LevelEntryTypesService extends Component
         foreach($sectionEntryTypes as $sectionEntryType)
         {
             unset($entryTypesArray[$sectionEntryType]);
-             
         } 
         
         return array_values($entryTypesArray);
@@ -95,7 +88,6 @@ class LevelEntryTypesService extends Component
                 $output['limitedLevels'][(string) $section->id] = [];
                 $sectionHandleMap[$section->handle] = $section->id;
                 $sectionEntryTypes[$section->id] = [];
-
             }
         }
 
@@ -111,44 +103,36 @@ class LevelEntryTypesService extends Component
         // Loop through the structures in our settings
         foreach($settings['structures'] as $structureHandle => $structureSettings)
         {
-            $structureLevels = array_keys($structureSettings);
-
-            //$limitedLevels[$sectionHandleMap[$structureHandle]] = $structureLevels;
-            $output['limitedLevels'][$sectionHandleMap[$structureHandle]] = $structureLevels;
-
-            // Loop through the levels in each structure
-            foreach($structureSettings as $structureLevel => $structureLevelEntryTypes)
+            // make sure the structure handle in our settings is a valid
+            // structure handle
+            if(in_array($structureHandle, array_keys($sectionHandleMap)))
             {
+                $structureLevels = array_keys($structureSettings);
 
-                // Loop through the entry types in each level
-                foreach($structureLevelEntryTypes as $structureLevelEntryTypeHandle)
-                {
-                    // Add to the output array
-                    // this convuluted mess adds each level to the output
-                    // add new level to output[section ID][entry type name]
-                    $output['map'][ $sectionHandleMap[$structureHandle] ][ $entryTypeHandleMap[$structureLevelEntryTypeHandle]][] = $structureLevel;
-                }
+                $output['limitedLevels'][$sectionHandleMap[$structureHandle]] = $structureLevels;
 
-                if(empty($structureLevelEntryTypes))
+                // Loop through the levels in each structure
+                foreach($structureSettings as $structureLevel => $structureLevelEntryTypes)
                 {
-                   foreach($entryTypes as $entryType)
-                   {
-                        $output['map'][ $sectionHandleMap[$structureHandle] ][$entryType->name][] = $structureLevel; 
-                   }
+
+                    // Loop through the entry types in each level
+                    foreach($structureLevelEntryTypes as $structureLevelEntryTypeHandle)
+                    {
+                        // Add to the output array
+                        // this convuluted mess adds each level to the output
+                        // add new level to output[section ID][entry type name]
+                        $output['map'][ $sectionHandleMap[$structureHandle] ][ $entryTypeHandleMap[$structureLevelEntryTypeHandle]][] = $structureLevel;
+                    }
+
+                    if(empty($structureLevelEntryTypes))
+                    {
+                       foreach($entryTypes as $entryType)
+                       {
+                            $output['map'][ $sectionHandleMap[$structureHandle] ][$entryType->name][] = $structureLevel; 
+                       }
+                    }
                 }
             }
-            
-            // // Go through the output by entry type
-            // foreach($output['map'][$sectionHandleMap[$structureHandle]] as $outputSectionEntryTypeKey => $outputSectionEntryTypes)
-            // {
-            //     // if no levels are defined for a given entry type
-            //     // then default to all levels
-            //     if(empty($outputSectionEntryTypes))
-            //     {
-            //         $output['map'][$sectionHandleMap[$structureHandle]][$outputSectionEntryTypeKey] = $structureLevels;
-            //     }
-            // }
-
         }
 
         return json_encode($output);
