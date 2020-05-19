@@ -4,7 +4,7 @@ Allows developers to limit the entry types available at each level of a structur
 
 ## Requirements
 
-This plugin requires Craft CMS 3.x.
+This plugin requires Craft CMS 3.4.0 or later.
 
 ## Installation
 
@@ -22,20 +22,46 @@ To install the plugin, follow these instructions.
 
 ## Level Entry Types Overview
 
--Insert text here-
+This plugin allows you to specify available entry types to the user based on the current structure level of an entry.
+
+For example, if you have a structure made up of landing pages and tabbed pages, you can ensure tabbed pages are only allowed as a descendant of a landing page.
 
 ## Configuring Level Entry Types
 
--Insert text here-
+There are no control panel settings for this plugin.
+
+Level Entry Types supports the standard multi-environment friendly config plugin settings file. Just copy the `level-entry-types.php` file to your Craft `config` directory and you can configure the settings in a multi-environment friendly way.
+
+```
+<?php
+
+return [
+	'structures' => [
+		// 'sectionHandle' => [
+		// add each level you want to customize
+		//		1 => [
+		//			'entryTypeHandle'
+		//		]
+		//
+		//]
+	]
+];
+```
+
+1. In the structures array, add the section handle(s) (must be a structure) whose entry types you want to manage.
+2. For each level of a structure, create an array of acceptable entry types. Each level can contain as many entry types as needed. *If a level is left blank, or not defined at all, the native Craft behavior of allowing any entry type at that level will apply.*
+3. In the Craft control panel, for each structure using this plugin, add a new “Entry Type” column to your element index view. This is required to display errors to the end user from the element index page.
+
+This plugin does not alter Craft’s native behavior when it comes to saving entries. If somehow an entry is on a level it shouldn’t be, this plugin will provide an error UI and a flash alert indicating such. Functionally, we aren’t preventing or changing native Craft behavior.
 
 ## Using Level Entry Types
 
--Insert text here-
+Once your configuration file is in place and the columns have been added to the control panel element index pages you should be good to go.
 
-## Level Entry Types Roadmap
+Consider the following example:
 
-Some things to do, and ideas for potential features:
+You have a *structure* of *Companies*. The top level entry should be the *Company* name. The second level should be various *Departments* in the company. The third level is various tabs on a *Department* page and can be any of *News*, *Team*, or *Custom Tab* types.
 
-* Release it
+## Credits
 
 Brought to you by [Conflux Group, Inc.](https://confluxgroup.com)
