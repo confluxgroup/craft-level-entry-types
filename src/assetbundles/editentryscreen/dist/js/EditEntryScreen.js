@@ -18,7 +18,7 @@
 		// Initialization method
 		init: function() {
 			var self = this;
-			
+
 			self.$sectionId = $("input[name='sectionId']").val();
 			self.$selectedParent = $('#parentId').data('elementSelect').getElements().first().data('id');
 
@@ -93,11 +93,11 @@
 
 			    if(enabledAndSelected > 0)
 			    {
-			    	Craft.cp.displayError('The selected parent entry does not allow child entries of this type. Select a new parent or change entry types.');
+			    	Craft.cp.displayError('Invalid entry parent. Select a new parent or change entry types.');
 
 		            $("#entryType-field").addClass("entry-position-error");
 			    }
 			});
 		}
-	});	
+	});
 })(jQuery);
