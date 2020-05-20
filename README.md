@@ -10,7 +10,9 @@ This plugin requires Craft CMS 3.4.0 or later.
 
 ## Installation
 
-To install the plugin, follow these instructions.
+You install Level Entry Types via the Plugin Store in the Craft Control Panel.
+
+To install the plugin manually, follow these instructions.
 
 1. Open your terminal and go to your Craft project:
 
