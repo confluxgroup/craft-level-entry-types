@@ -118,10 +118,14 @@ class LevelEntryTypesService extends Component
                     // Loop through the entry types in each level
                     foreach($structureLevelEntryTypes as $structureLevelEntryTypeHandle)
                     {
-                        // Add to the output array
-                        // this convuluted mess adds each level to the output
-                        // add new level to output[section ID][entry type name]
-                        $output['map'][ $sectionHandleMap[$structureHandle] ][ $entryTypeHandleMap[$structureLevelEntryTypeHandle]][] = $structureLevel;
+                        if(in_array($structureLevelEntryTypeHandle, array_keys($entryTypeHandleMap)))
+                        {
+
+                            // Add to the output array
+                            // this convuluted mess adds each level to the output
+                            // add new level to output[section ID][entry type name]
+                            $output['map'][ $sectionHandleMap[$structureHandle] ][ $entryTypeHandleMap[$structureLevelEntryTypeHandle]][] = $structureLevel;
+                        }
                     }
 
                     if(empty($structureLevelEntryTypes))
