@@ -1,7 +1,7 @@
 {
   "pluginName": "Level Entry Types",
   "pluginDescription": "Allows developers to limit the entry types available at each level of a structure section.",
-  "pluginVersion": "1.0.0",
+  "pluginVersion": "1.0.2",
   "pluginAuthorName": "Conflux Group, Inc.",
   "pluginVendorName": "confluxgroup",
   "pluginAuthorUrl": "https://confluxgroup.com",
