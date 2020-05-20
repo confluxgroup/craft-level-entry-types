@@ -7,7 +7,7 @@
  * @copyright Copyright (c) 2020 Conflux Group, Inc.
  * @link      https://confluxgroup.com
  * @package   LevelEntryTypes
- * @since     1
+ * @since     1.0.0
  */
  (function($){
     Craft.LevelEntryTypesIndex = Garnish.Base.extend({

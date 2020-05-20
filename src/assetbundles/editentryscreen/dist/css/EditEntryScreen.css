@@ -1,15 +1,14 @@
 /**
- * Jem plugin for Craft CMS
+ * Level Entry Types plugin for Craft CMS
  *
- * Jem CSS
+ * EditEntryScreen CSS
  *
  * @author    Conflux Group, Inc.
  * @copyright Copyright (c) 2020 Conflux Group, Inc.
  * @link      https://confluxgroup.com
- * @package   Jem
- * @since     1
+ * @package   LevelEntryTypes
+ * @since     1.0.0
  */
-
 #entryType-field.entry-position-error label {
     color: #EF4E4E !important;
 }
