@@ -1,3 +1,5 @@
+<img src="./src/icon.svg" width="100" alt="plugin icon logo" />
+
 # Level Entry Types plugin for Craft CMS 3.x
 
 ![overview gif](./docs/screenshots/level-entry-types-overview.gif)
