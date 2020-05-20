@@ -82,7 +82,7 @@
             // If there are errors, kill any existing notifications and display an error.
             if (hasErrors) {
                 self.$notifications.fadeOut().remove();
-                Craft.cp.displayError('One or more entries has a selected parent entry that does not allow child entries of this type. Select a new parent or change entry types.');
+                Craft.cp.displayError('Invalid entry parent. Select a new parent or change entry types.');
             }
         }
     });
