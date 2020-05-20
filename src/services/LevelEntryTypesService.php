@@ -14,13 +14,6 @@ use Craft;
 use craft\base\Component;
 use craft\services\Sections;
 
-/**
- * LevelEntryTypesService Service
- *
- * @author    Conflux Group, Inc.
- * @package   LevelEntryTypes
- * @since     1
- */
 class LevelEntryTypesService extends Component
 {
     // Public Methods

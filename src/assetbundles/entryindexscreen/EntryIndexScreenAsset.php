@@ -12,13 +12,6 @@ use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
-/**
- * EditEntryScreenAsset AssetBundle
- *
- * @author    Conflux Group, Inc.
- * @package   LevelEntryTypes
- * @since     1
- */
 class EntryIndexScreenAsset extends AssetBundle
 {
     // Public Methods

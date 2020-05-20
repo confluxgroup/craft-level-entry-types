@@ -7,14 +7,6 @@
  * @link      https://confluxgroup.com
  * @copyright Copyright (c) 2020 Conflux Group, Inc.
  */
-
-/**
- * Level Entry Types en Translation
- *
- * @author    Conflux Group, Inc.
- * @package   LevelEntryTypes
- * @since     0.1.0
- */
 return [
     'Level Entry Types plugin loaded' => 'Level Entry Types plugin loaded',
 ];

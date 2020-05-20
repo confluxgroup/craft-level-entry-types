@@ -10,29 +10,19 @@
 
 namespace ConfluxGroup\LevelEntryTypes;
 
-
 use Craft;
 use craft\base\Plugin;
 use craft\services\Plugins;
 use craft\events\PluginEvent;
-
 use yii\base\Event;
-
 use craft\web\View;
 use craft\events\RegisterTemplateRootsEvent;
 
 use ConfluxGroup\LevelEntryTypes\assetbundles\editentryscreen\EditEntryScreenAsset;
 use ConfluxGroup\LevelEntryTypes\assetbundles\entryindexscreen\EntryIndexScreenAsset;
-
 use ConfluxGroup\LevelEntryTypes\services\LevelEntryTypesService;
 use ConfluxGroup\LevelEntryTypes\models\Settings;
-/**
- *
- * @author    Conflux Group, In.c
- * @package   LevelEntryTypes
- * @since     0.1.0
- *
- */
+
 class LevelEntryTypes extends Plugin
 {
     // Static Properties
@@ -41,7 +31,7 @@ class LevelEntryTypes extends Plugin
 
     // Public Properties
     // =========================================================================
-    public $schemaVersion = '0.1.0';
+    public $schemaVersion = '1.0.0';
     public $hasCpSettings = false;
     public $hasCpSection = false;
 
@@ -56,7 +46,6 @@ class LevelEntryTypes extends Plugin
 
         $this->setComponents([
             'levelEntryTypesService' => LevelEntryTypesService::class
-
         ]);
 
         // Only fire event on the admin/entries section of the CP
@@ -75,7 +64,6 @@ class LevelEntryTypes extends Plugin
                         Craft::$app->getView()->registerJs('new Craft.LevelEntryTypesEntry();', View::POS_READY);
                     }
                 );
-
             }
             // Entry Index
             else
@@ -109,5 +97,4 @@ class LevelEntryTypes extends Plugin
     {
         return new Settings();
     }
-
 }

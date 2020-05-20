@@ -6,7 +6,6 @@ use ConfluxGroup\LevelEntryTypes\LevelEntryTypes;
 
 use Craft;
 use craft\web\Controller;
-
 use craft\elements\Entry;
 
 class EntryTypesController extends Controller
@@ -36,8 +35,6 @@ class EntryTypesController extends Controller
             $level = $parentEntry->level;
         }
 
-
-
         $entryTypes = LevelEntryTypes::$plugin->levelEntryTypesService->getDisabledEntryTypes($sectionId, $level);
 
         $result = json_encode([
@@ -55,6 +52,4 @@ class EntryTypesController extends Controller
     {
         return LevelEntryTypes::$plugin->levelEntryTypesService->getSectionEntryTypeLevelMap();
     }
-
-
 }

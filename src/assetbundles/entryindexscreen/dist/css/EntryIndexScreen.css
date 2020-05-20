@@ -1,15 +1,14 @@
 /**
- * Jem plugin for Craft CMS
+ * Level Entry Types plugin for Craft CMS
  *
- * Jem CSS
+ * EntryIndexScreen CSS
  *
  * @author    Conflux Group, Inc.
  * @copyright Copyright (c) 2020 Conflux Group, Inc.
  * @link      https://confluxgroup.com
  * @package   LevelEntryTypes
- * @since     1
+ * @since     1.0.0
  */
-
 .entry-position-error td[data-attr='type'] {
      color: #EF4E4E;
      position: relative;
