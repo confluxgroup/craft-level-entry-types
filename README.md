@@ -36,20 +36,26 @@ This plugin will allow a user to select from a filtered list of entry types, or 
 
 There are no control panel settings for this plugin.
 
-Level Entry Types supports the standard multi-environment friendly config plugin settings file. Just copy the `level-entry-types.php` file to your Craft `config` directory and you can configure the settings in a multi-environment friendly way.
+Level Entry Types supports the standard multi-environment friendly config plugin settings file. Just copy the `level-entry-types.php` file from the `vendor/confluxgroup/craft-level-entry-types` directory to your Craft `config` directory and configure the settings to your liking.
 
+### Example level-entry-types.php config file
 ```
 <?php
 
 return [
 	'structures' => [
-		// 'sectionHandle' => [
-		// add each level you want to customize
-		//		1 => [
-		//			'entryTypeHandle'
-		//		]
-		//
-		//]
+		// list your structure section handles		
+		'sectionOneHandle' => [
+			// add each level you want to limit
+			1 => [
+				// add each entry type that's allowed at this level
+				'entryTypeHandle',
+				'entryTypeTwoHandle
+			],
+			2 => [
+				'entryTypeThreeHandle'
+			]
+		], // don't forget a comma if you're defining multiple structures
 	]
 ];
 ```
