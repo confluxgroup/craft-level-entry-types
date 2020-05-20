@@ -82,4 +82,4 @@ You have a *structure* of *Companies*. The top level entry should be the *Compan
 
 ## Credits
 
-Brought to you by [Conflux Group, Inc.](https://confluxgroup.com)
+Brought to you by [Conflux Group](https://confluxgroup.com) and [Cotter Interactive](https://cotterinteractive.com)
