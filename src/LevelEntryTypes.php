@@ -5,7 +5,7 @@
  * Allows developers to limit the entry types available at each level of a structure section.
  *
  * @link      https://confluxgroup.com
- * @copyright Copyright (c) 2020 Conflux Group, In.c
+ * @copyright Copyright (c) 2020 Conflux Group, Inc.
  */
 
 namespace ConfluxGroup\LevelEntryTypes;

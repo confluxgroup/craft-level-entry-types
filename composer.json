@@ -2,7 +2,7 @@
     "name": "confluxgroup/craft-level-entry-types",
     "description": "Allows developers to limit the entry types available at each level of a structure section.",
     "type": "craft-plugin",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "keywords": [
         "craft",
         "cms",

@@ -1,5 +1,11 @@
 # Level Entry Types Changelog
 
+## 1.0.4 - 2020-05-25
+
+### Fixed
+
+- Fixed a bug where the entry index JS was expecting the structure ID to match the section ID, which is not always the case.
+
 ## 1.0.3 - 2020-05-25
 
 ### Fixed
