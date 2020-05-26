@@ -68,8 +68,9 @@
                 level = self.pixelsMap[padding];
                 entryTypeName = $(this).text();
 
-                allowedLevels = LevelEntryTypesData.map[structureId][entryTypeName];
-                limitedLevels = LevelEntryTypesData.limitedLevels[structureId];
+                sectionId = LevelEntryTypesData.structureIds[structureId];
+                allowedLevels = LevelEntryTypesData.map[sectionId][entryTypeName];
+                limitedLevels = LevelEntryTypesData.limitedLevels[sectionId];
 
                 if (allowedLevels.includes(level) || !limitedLevels.includes(level)) {
                     $(this).parent().removeClass("entry-position-error");

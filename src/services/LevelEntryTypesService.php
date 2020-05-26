@@ -66,6 +66,7 @@ class LevelEntryTypesService extends Component
         $output = [];
         $output['map'] = [];
         $output['limitedLevels'] = [];
+        $output['structureIds'] = [];
 
         // Some map arrays
         $sectionHandleMap = [];
@@ -81,6 +82,7 @@ class LevelEntryTypesService extends Component
                 $output['limitedLevels'][(string) $section->id] = [];
                 $sectionHandleMap[$section->handle] = $section->id;
                 $sectionEntryTypes[$section->id] = [];
+                $output['structureIds'][$section->structureId] = $section->id;
             }
         }
 
