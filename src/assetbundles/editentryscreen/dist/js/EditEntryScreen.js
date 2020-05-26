@@ -20,24 +20,29 @@
 			var self = this;
 
 			self.$sectionId = $("input[name='sectionId']").val();
-			self.$selectedParent = $('#parentId').data('elementSelect').getElements().first().data('id');
+			
+			// Check if we have a parent entry field to ensure this is a structure entry
+			if( $('#parentId').data('elementSelect') ){
+				self.$selectedParent = $('#parentId').data('elementSelect').getElements().first().data('id');
 
-		    self.refreshEntryTypes(self.$selectedParent, self.$sectionId);
+			    self.refreshEntryTypes(self.$selectedParent, self.$sectionId);
 
-			$('#parentId').data('elementSelect').on('selectElements', function(e) {
-		    	self.$selectedParent = e.elements[0].id || 0;
-		    	self.refreshEntryTypes(self.$selectedParent, self.$sectionId);
-			});
+				$('#parentId').data('elementSelect').on('selectElements', function(e) {
+			    	self.$selectedParent = e.elements[0].id || 0;
+			    	self.refreshEntryTypes(self.$selectedParent, self.$sectionId);
+				});
 
-			$('#parentId').data('elementSelect').on('removeElements', function(e) {
-		    	self.$selectedParent = 0;
-		    	self.refreshEntryTypes(self.$selectedParent, self.$sectionId);
-			});
+				$('#parentId').data('elementSelect').on('removeElements', function(e) {
+			    	self.$selectedParent = 0;
+			    	self.refreshEntryTypes(self.$selectedParent, self.$sectionId);
+				});
 
-		    $("#entryType").on('change', function(){
-		        self.$selectedParent = $('#parentId').data('elementSelect').getElements().first().data('id');
-		        self.refreshEntryTypes(self.$selectedParent, self.$sectionId);
-		    });
+			    $("#entryType").on('change', function(){
+			        self.$selectedParent = $('#parentId').data('elementSelect').getElements().first().data('id');
+			        self.refreshEntryTypes(self.$selectedParent, self.$sectionId);
+			    });
+
+		    }
 		},
 
 		// URL param method for getting query params
