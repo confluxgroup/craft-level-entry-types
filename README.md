@@ -22,7 +22,7 @@ To install the plugin manually, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require confluxgroup/level-entry-types
+        composer require confluxgroup/craft-level-entry-types
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Level Entry Types.
 
