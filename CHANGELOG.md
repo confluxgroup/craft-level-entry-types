@@ -1,5 +1,9 @@
 # Level Entry Types Changelog
 
+## 1.0.5 - 2022-02-24
+
+- Ensure consistency of JSON being returned across environments. Fixes #5 (Thanks @eirabben)
+
 ## 1.0.4 - 2020-05-25
 
 ### Fixed
